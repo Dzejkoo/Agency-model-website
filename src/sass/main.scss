@@ -1,6 +1,15 @@
 @import 'reset';
+@import 'mixins';
+@import 'header';
+@import 'card';
 
+html,
 body {
+    margin: 0 auto;
+    margin-top: auto;
+    max-width: 1289px;
+    max-height: 100vh;
+    font-size: 10px;
     font-family: 'Cormorant Garamond',
         serif;
 }
