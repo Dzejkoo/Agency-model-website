@@ -15,8 +15,6 @@
 
 
     @media (max-width: 630px) {
-        // grid-template-columns: 1fr minmax(5%, 250px) 1fr;
-        // grid-template-rows: auto;
         height: auto;
         max-height: none;
         display: flex;
@@ -65,7 +63,6 @@
     }
 
     &__content {
-        // width: 50%;
         grid-column: 3/4;
 
         @media (max-width: 630px) {
