@@ -5,7 +5,7 @@ export class Models {
         this.photos = document.querySelectorAll('#model__image')
     }
     getModelsPhotoFromApi() {
-        fetch(`${this.apiUrl}/search/photos/?client_id=${this.apiKey}&query=fashion`)
+        fetch(`${this.apiUrl}/photos/?client_id=${this.apiKey}`)
             .then(resp => resp.json())
             .then(data => this.chooseSpecificDimensions(data))
 
