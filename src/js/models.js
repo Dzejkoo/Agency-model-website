@@ -5,7 +5,11 @@ export class Models {
         this.photos = document.querySelectorAll('#model__image')
     }
     getModelsPhotoFromApi() {
+<<<<<<< HEAD
         fetch(`${this.apiUrl}/search/photos/?client_id=${this.apiKey}&query=fashion`)
+=======
+        fetch(`${this.apiUrl}/photos/?client_id=${this.apiKey}`)
+>>>>>>> parent of e53ab35 (Change structure of JS)
             .then(resp => resp.json())
             .then(data => this.chooseSpecificDimensions(data))
 
