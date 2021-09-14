@@ -7,7 +7,11 @@ export class Models {
     getModelsPhotoFromApi() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         fetch(`${this.apiUrl}/search/photos/?client_id=${this.apiKey}&query=fashion`)
+=======
+        fetch(`${this.apiUrl}/photos/?client_id=${this.apiKey}`)
+>>>>>>> parent of e53ab35 (Change structure of JS)
 =======
         fetch(`${this.apiUrl}/photos/?client_id=${this.apiKey}`)
 >>>>>>> parent of e53ab35 (Change structure of JS)
