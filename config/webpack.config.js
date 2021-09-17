@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: 'development',
-
     entry: [paths.src + '/main.js'],
 
     output: {
@@ -37,7 +36,6 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name]-[contenthash:6].[ext]',
-                        outputPath: 'images',
                     }
 
                 }, ],

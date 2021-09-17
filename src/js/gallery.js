@@ -1,5 +1,26 @@
 export class Gallery {
     constructor() {
         this.pictures = document.querySelectorAll('.card__gallery-photo');
+        this.mainPicture = document.querySelector('.card__image-photo');
+        this.name = document.querySelector('.card__name');
+        this.listenClick()
+    }
+
+    listenClick() {
+        this.pictures.forEach(el => el.addEventListener('click', () => {
+            this.changeMainPhoto(el.src)
+        }))
+    }
+
+    changeMainPhoto(src) {
+        this.mainPicture.setAttribute('src', src)
+    }
+
+    setAtrubutePhoto(correctPhoto) {
+        this.mainPicture.setAttribute('src', correctPhoto[0].urls.regular)
+        for (let i = 0; i < this.pictures.length; i++) {
+            this.pictures[i].setAttribute('src', correctPhoto[i].urls.regular)
+            this.pictures[i].setAttribute('alt', correctPhoto[i].alt_description)
+        }
     }
 }
