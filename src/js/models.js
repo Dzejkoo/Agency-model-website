@@ -1,6 +1,7 @@
 import {
     Gallery
-} from "./gallery"
+} from "./gallery";
+
 
 
 export class Models {
@@ -8,9 +9,10 @@ export class Models {
         this.apiUrl = 'https://api.unsplash.com/'
         this.apiKey = 'ujAeYpJ3CH0yUrvTA4u8xlRL2BxqXpY4jj_uEUew8h0'
         this.gallery = new Gallery()
+
     }
     getModelsPhotoFromApi() {
-        fetch(`${this.apiUrl}/users/domjewel/photos/?client_id=${this.apiKey}`)
+        fetch(`${this.apiUrl}/users/corey_saldana/photos/?client_id=${this.apiKey}`)
             .then(resp => resp.json())
             .then(data => this.chooseSpecificDimensions(data))
     }
@@ -21,6 +23,7 @@ export class Models {
                 return element
             }
         });
-        this.gallery.setAtrubutePhoto(correctPhoto)
+        console.log(array)
+        this.gallery.setPropertiesPhoto(correctPhoto, array[0].user.name)
     }
 }
