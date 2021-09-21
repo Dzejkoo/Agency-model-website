@@ -12,8 +12,7 @@ import './sass/main.scss';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const photoModels = new Models();
-    photoModels.getModelsPhotoFromApi();
+    new Models();
     new Gallery()
     new Users()
 

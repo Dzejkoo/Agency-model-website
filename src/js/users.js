@@ -1,3 +1,7 @@
+import {
+    Models
+} from './models';
+
 export class Users {
     constructor() {
         this.arrayUser = ['domjewel', 'romashilin', 'corey_saldana'];
@@ -5,6 +9,7 @@ export class Users {
         this.nextPrev = document.querySelector('.prev');
         this.changeUsersByClick()
         this.i = 0;
+        this.models = new Models();
 
     }
 
@@ -14,6 +19,9 @@ export class Users {
             if (this.i >= 3) {
                 this.i = 0
             }
+            fetch(`${this.models.apiUrl}/users/${this.arrayUser[this.i]}/photos/?client_id=${this.models.apiKey}`)
+                .then(resp => resp.json())
+                .then(data => this.models.chooseSpecificDimensions(data))
         })
     }
 }
