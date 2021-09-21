@@ -5,6 +5,7 @@ import {
 export class Users {
     constructor() {
         this.arrayUser = ['domjewel', 'romashilin', 'corey_saldana'];
+        this.arrayCounterElement = document.querySelectorAll('.card__navigation-number');
         this.nextButton = document.querySelector('.next');
         this.nextPrev = document.querySelector('.prev');
         this.changeUsersByClick()
@@ -15,13 +16,16 @@ export class Users {
 
     changeUsersByClick() {
         this.nextButton.addEventListener('click', () => {
+            this.arrayCounterElement[this.i].classList.remove('card__navigation-number--active')
             this.i++;
             if (this.i >= 3) {
                 this.i = 0
             }
+            this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
             fetch(`${this.models.apiUrl}/users/${this.arrayUser[this.i]}/photos/?client_id=${this.models.apiKey}`)
                 .then(resp => resp.json())
                 .then(data => this.models.chooseSpecificDimensions(data))
+
         })
     }
 }

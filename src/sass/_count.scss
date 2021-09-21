@@ -1,0 +1,23 @@
+.card__navigation-number {
+    transform: translateY(-90%);
+    position: absolute;
+    transition: all 0.8s ease;
+    z-index: -1;
+    opacity: 0;
+
+    &--active {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    &--static {
+        opacity: 1;
+        z-index: 0;
+        position: relative;
+    }
+}
+
+.card__container {
+    display: flex;
+    flex-direction: row;
+}

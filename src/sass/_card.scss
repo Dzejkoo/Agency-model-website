@@ -158,8 +158,17 @@
 
                 line-height: 50%;
             }
+        }
 
+        &-static {
+            color: #fff;
+            @include fluid-type(35px, 70px, 320px, 1440px);
 
+            @media (max-width: 630px) {
+                @include fluid-type(45px, 70px, 300px, 629px);
+
+                line-height: 50%;
+            }
         }
 
         &-button {
