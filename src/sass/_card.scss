@@ -41,7 +41,6 @@
         grid-column: 2/3;
         height: 100%;
         width: 100%;
-
         grid-row: 2/3;
         z-index: 1;
 
@@ -49,6 +48,7 @@
             grid-column: 2/3;
             grid-row: 2/3;
             width: 80%;
+            height: 400px;
             margin-top: 35px;
         }
 
@@ -58,6 +58,7 @@
             left: 50%;
             width: 35%;
             transform: translate(-50%, -50%);
+            z-index: 1;
         }
 
         &-photo {
@@ -86,20 +87,7 @@
         z-index: 1;
     }
 
-    &__name {
-        @include fluid-type(65px, 150px, 630px, 1440px);
-        color: #fff;
-        font-weight: 500;
-        line-height: 60%;
-        transform: translate(-7%, -10%);
 
-        @media (max-width: 630px) {
-            width: 80%;
-            transform: translate(0%, 0%);
-            @include fluid-type(55px, 110px, 300px, 629px);
-        }
-
-    }
 
     &__description {
         width: 80%;
@@ -120,12 +108,16 @@
         width: 80%;
         display: flex;
         justify-content: space-between;
-        height: 35%;
+        height: 30%;
 
         &-photo {
             width: 30%;
             object-fit: cover;
             cursor: pointer;
+
+            @media (max-width: 630px) {
+                height: 147px;
+            }
         }
     }
 

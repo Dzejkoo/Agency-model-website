@@ -1,0 +1,45 @@
+.card__image-photo {
+    animation: changePhotoBackward ease-in-out 0.4s both;
+
+    &--active {
+        animation: changePhotoForward ease-in-out 0.5s both;
+    }
+
+}
+
+@keyframes changePhotoForward {
+    0% {
+        transform: rotate(0deg) translateX(0%) translateY(0%);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translate(2deg);
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(5deg) translateX(-50%) translateY(15%);
+        opacity: 0
+    }
+}
+
+@keyframes changePhotoBackward {
+    0% {
+        display: block;
+        transform: rotate(-5deg) translateX(50%) translateY(15%);
+        opacity: 0
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(0deg) translateX(0%) translateY(0%);
+        opacity: 1;
+    }
+}

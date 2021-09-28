@@ -1,0 +1,82 @@
+.card__name {
+    @include fluid-type(65px, 150px, 630px, 1440px);
+    color: #fff;
+    font-weight: 500;
+    line-height: 70%;
+    transform: translate(-7%, -10%);
+    overflow: hidden;
+    word-spacing: 10000vw;
+
+    @media (max-width: 630px) {
+        width: 80%;
+        transform: translate(0%, 0%);
+        @include fluid-type(55px, 110px, 300px, 629px);
+    }
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 50%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: #fff;
+        transform: translateY(-105%);
+    }
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        transform: translateY(105%);
+        background-color: #fff;
+    }
+
+    &--active::after {
+        animation: changingNameCurtainDown 1s ease-in-out both;
+    }
+
+    &--active::before {
+        animation: changingNameCurtainUp 1s ease-in-out both;
+    }
+
+}
+
+@keyframes changingNameCurtainDown {
+    0% {
+        transform: translateY(105%);
+    }
+
+    50% {
+        transform: translateY(0%);
+    }
+
+    60% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(105%);
+    }
+}
+
+@keyframes changingNameCurtainUp {
+    0% {
+        transform: translateY(-105%);
+    }
+
+    50% {
+        transform: translateY(0%);
+    }
+
+    60% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-105%);
+    }
+}
