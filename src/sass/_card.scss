@@ -44,6 +44,12 @@
         grid-row: 2/3;
         z-index: 1;
 
+        &-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
         @media (max-width: 630px) {
             grid-column: 2/3;
             grid-row: 2/3;
@@ -163,6 +169,13 @@
             }
         }
 
+        &-link {
+            z-index: 1;
+            background: none;
+            color: #fff;
+            text-decoration: none;
+        }
+
         &-button {
             font-size: 2rem;
             border: none;
@@ -172,6 +185,7 @@
             position: relative;
             padding-left: 0;
             cursor: pointer;
+
             font-family: 'Cormorant Garamond',
                 serif;
             @include fluid-type(24px, 29px, 320px, 1440px);

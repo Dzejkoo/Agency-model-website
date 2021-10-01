@@ -1,12 +1,12 @@
-.card__gallery {
-    animation: animationBackward ease-in-out 0.5s both;
+.card__description {
+    animation: hideDescription 0.5s ease-in-out both;
 
     &--active {
-        animation: animationForward ease-in-out 0.5s both;
+        animation: visibleDescription 0.5s ease-in-out both;
     }
 }
 
-@keyframes animationForward {
+@keyframes visibleDescription {
     0% {
         transform: translateX(0%);
         opacity: 1;
@@ -18,7 +18,7 @@
     }
 }
 
-@keyframes animationBackward {
+@keyframes hideDescription {
     0% {
         transform: translateX(50%);
         opacity: 0;
