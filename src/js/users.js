@@ -7,39 +7,56 @@ export class Users {
         this.arrayUser = ['domjewel', 'luisviol', 'charlyyyy'];
         this.arrayCounterElement = document.querySelectorAll('.card__navigation-number');
         this.headerCard = document.querySelector('.card__name');
-        this.button = document.querySelectorAll('.button');
+        this.buttonEl = document.querySelectorAll('.button');
         this.mainPhoto = document.querySelector('.card__image-wrapper')
         this.galleryContainer = document.querySelector('.card__gallery')
         this.desciptionUser = document.querySelector('.card__description')
         this.changeUsersByClick()
         this.i = 0;
+        this.a = 0;
         this.models = new Models();
+        this.changeUserBySwipe()
+        this.xRight = null
 
 
     }
-    showLoading() {
-        this.spinnerEl.forEach(el => el.classList.add('spinner__wrapper--active'))
+    getTouches(e) {
+        return e.touches;
     }
+    changeUserBySwipe() {
 
-    hideLoading() {
-        this.spinnerEl.forEach(el => el.classList.remove('spinner__wrapper--active'))
+        window.addEventListener('touchstart', (e) => {
+            const firstTouch = this.getTouches(e)[0];
+            this.xRight = firstTouch.clientX;
+        })
+
+        window.addEventListener('touchmove', (e) => {
+            if (!this.xRight) {
+                return
+            }
+            console.log(e)
+        })
     }
 
     changeUsersByClick() {
-        this.button.forEach(element => element.addEventListener('click', () => {
-            this.arrayCounterElement[this.i].classList.remove('card__navigation-number--active')
-            this.i++;
-            if (this.i >= 3) {
-                this.i = 0
-            }
-            this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
-            fetch(`${this.models.apiUrl}/users/${this.arrayUser[this.i]}/photos/?client_id=${this.models.apiKey}`)
-                .then(resp => resp.json())
-                .then(data => this.models.chooseSpecificDimensions(data))
-            this.changeAnimation();
-
+        this.buttonEl.forEach(element => element.addEventListener('click', () => {
+            this.changeUser()
         }))
     }
+
+    changeUser() {
+        this.arrayCounterElement[this.i].classList.remove('card__navigation-number--active')
+        this.i++;
+        if (this.i >= 3) {
+            this.i = 0
+        }
+        this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
+        fetch(`${this.models.apiUrl}/users/${this.arrayUser[this.i]}/photos/?client_id=${this.models.apiKey}`)
+            .then(resp => resp.json())
+            .then(data => this.models.chooseSpecificDimensions(data))
+        this.changeAnimation();
+    }
+
     changeAnimation() {
         this.headerCard.classList.add('card__name--active');
         this.mainPhoto.classList.add('card__image-wrapper--active');

@@ -15,7 +15,12 @@ body {
     margin-top: auto;
     max-width: 1289px;
     max-height: 100vh;
+
+    @media (max-width: 630px) {
+        max-height: 300vh;
+    }
+
     font-size: 10px;
     font-family: 'Cormorant Garamond',
-        serif;
+    serif;
 }
