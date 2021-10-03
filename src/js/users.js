@@ -20,23 +20,6 @@ export class Users {
 
 
     }
-    getTouches(e) {
-        return e.touches;
-    }
-    changeUserBySwipe() {
-
-        window.addEventListener('touchstart', (e) => {
-            const firstTouch = this.getTouches(e)[0];
-            this.xRight = firstTouch.clientX;
-        })
-
-        window.addEventListener('touchmove', (e) => {
-            if (!this.xRight) {
-                return
-            }
-            console.log(e)
-        })
-    }
 
     changeUsersByClick() {
         this.buttonEl.forEach(element => element.addEventListener('click', () => {
