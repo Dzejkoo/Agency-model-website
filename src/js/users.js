@@ -13,12 +13,7 @@ export class Users {
         this.desciptionUser = document.querySelector('.card__description')
         this.changeUsersByClick()
         this.i = 0;
-        this.a = 0;
         this.models = new Models();
-        this.changeUserBySwipe()
-        this.xRight = null
-
-
     }
 
     changeUsersByClick() {
