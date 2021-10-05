@@ -17,10 +17,6 @@
         transform: translate(2deg);
     }
 
-    80% {
-        opacity: 0;
-    }
-
     100% {
         transform: rotate(5deg) translateX(-50%) translateY(15%);
         opacity: 0

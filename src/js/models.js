@@ -17,7 +17,6 @@ class Models {
     }
 
     chooseSpecificDimensions(array) {
-        console.log(array)
         const correctPhoto = array.filter(element => {
             if (element.width < element.height) {
                 return element
