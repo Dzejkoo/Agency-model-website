@@ -22,6 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new Gallery();
     const users = new Users();
     new Swiper();
-    document.addEventListener('swipeLeft', () => users.nextUser())
-    document.addEventListener('swipeRight', () => users.prevUser())
+    document.addEventListener('swipeLeft', () => users.nextUser(1))
+    document.addEventListener('swipeRight', () => users.prevUser(0))
 })
