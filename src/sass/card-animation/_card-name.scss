@@ -23,6 +23,7 @@
         background-color: #fff;
         transform: translateY(-105%);
         z-index: -1;
+        opacity: 0;
     }
 
     &::after {
@@ -35,58 +36,77 @@
         transform: translateY(105%);
         background-color: #fff;
         z-index: -1;
+        opacity: 0;
     }
 
     &--active::after {
-        animation: changingNameCurtainDown 1s ease-in-out both;
+        opacity: 0;
+        animation: changingNameCurtainDown 1s ease-in-out;
     }
 
     &--active::before {
-        animation: changingNameCurtainUp 1s ease-in-out both;
+        opacity: 0;
+        animation: changingNameCurtainUp 1s ease-in-out;
     }
 
 }
 
-@keyframes changingNameCurtainDown {
+@-webkit-keyframes changingNameCurtainDown {
     0% {
-        transform: translateY(105%);
-        visibility: hidden;
+        -webkit-transform: translateY(105%);
+        -webkit-opacity: 0;
+    }
+
+    10% {
+        -webkit-opacity: 1;
     }
 
     50% {
-        transform: translateY(0%);
-        visibility: visible;
+        -webkit-transform: translateY(0%);
+        -webkit-opacity: 1;
     }
 
     60% {
-        transform: translateY(0%);
-        visibility: visible;
+        -webkit-transform: translateY(0%);
+        -webkit-opacity: 1;
+    }
+
+    90% {
+        -webkit-opacity: 1;
     }
 
     100% {
-        visibility: hidden;
-        transform: translateY(105%);
+        -webkit-opacity: 0;
+        -webkit-transform: translateY(105%);
     }
 }
 
-@keyframes changingNameCurtainUp {
+@-webkit-keyframes changingNameCurtainUp {
     0% {
-        visibility: hidden;
-        transform: translateY(-105%);
+        -webkit-opacity: 0;
+        -webkit-transform: translateY(-105%);
+    }
+
+    10% {
+        -webkit-opacity: 1;
     }
 
     50% {
-        visibility: visible;
-        transform: translateY(0%);
+        -webkit-opacity: 1;
+        -webkit-transform: translateY(0%);
     }
 
     60% {
-        visibility: visible;
-        transform: translateY(0%);
+        -webkit-opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+
+    90% {
+        -webkit-opacity: 1;
     }
 
     100% {
-        visibility: hidden;
-        transform: translateY(-105%);
+        -webkit-opacity: 0;
+        -webkit-transform: translateY(-105%);
     }
 }
