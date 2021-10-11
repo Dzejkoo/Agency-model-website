@@ -29,7 +29,6 @@ export class Gallery {
                 this.pictures[i].setAttribute('src', correctPhoto[i].urls.regular)
                 this.pictures[i].setAttribute('alt', correctPhoto[i].alt_description)
             }
-
         }, 550)
 
     }

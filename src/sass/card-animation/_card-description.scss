@@ -1,5 +1,6 @@
 .card__description {
     animation: hideDescription 0.5s ease-in-out both;
+    word-wrap: break-word;
 
     &--active {
         animation: visibleDescription 0.5s ease-in-out both;

@@ -2,7 +2,7 @@
     @include fluid-type(65px, 150px, 630px, 1440px);
     color: #fff;
     font-weight: 500;
-    line-height: 70%;
+    line-height: 80%;
     transform: translate(-7%, -10%);
     overflow: hidden;
     word-spacing: 10000vw;
@@ -41,12 +41,12 @@
 
     &--active::after {
         opacity: 0;
-        animation: changingNameCurtainDown 1s ease-in-out;
+        animation: changingNameCurtainDown 1s ease-in-out both;
     }
 
     &--active::before {
         opacity: 0;
-        animation: changingNameCurtainUp 1s ease-in-out;
+        animation: changingNameCurtainUp 1s ease-in-out both;
     }
 
 }
