@@ -4,16 +4,19 @@ import {
 
 export class Users {
     constructor() {
-        this.arrayUserTile = ['domjewel', 'luisviol', 'charlyyyy', 'awilx6', 'visionary_imaging', 'spluzhnov', 'mumble57']
-        this.arrayUserShow = ['domjewel', 'luisviol', 'mumble57'];
+        this.arrayNameUserTile = ['luisviol', 'charlyyyy', 'awilx6', 'visionary_imaging', 'spluzhnov', 'mumble57', 'elyaspasban']
+        this.arrayUserShow = ['domjewel'];
+        this.arrayUserTile = document.querySelectorAll('.users__tile');
         this.usersName = document.querySelectorAll('.users__name');
         this.usersImage = document.querySelectorAll('.users__image')
-        this.arrayCounterElement = document.querySelectorAll('.card__navigation-number');
+        this.arrayCounterElement = [...document.querySelectorAll('.card__navigation-number')];
         this.headerCard = document.querySelector('.card__name');
         this.buttonEl = document.querySelectorAll('.button');
         this.mainPhoto = document.querySelector('.card__image-wrapper')
         this.galleryContainer = document.querySelector('.card__gallery')
         this.desciptionUser = document.querySelector('.card__description')
+
+        this.counter = document.querySelector('.card__count');
         this.changeUsersByClick()
         this.i = 0;
         this.models = new Models();
@@ -49,20 +52,36 @@ export class Users {
     }
 
     setUserOnTile() {
-        for (let i = 0; i < this.arrayUserTile.length; i++) {
-            fetch(`${this.models.apiUrl}/users/${this.arrayUserTile[i]}/photos/?client_id=${this.models.apiKey}`)
+        for (let i = 0; i < this.arrayNameUserTile.length; i++) {
+            fetch(`${this.models.apiUrl}/users/${this.arrayNameUserTile[i]}/photos/?client_id=${this.models.apiKey}`)
                 .then(resp => resp.json())
                 .then(resp => {
                     this.usersName[i].textContent = `${resp[0].user.name}`
                     this.usersImage[i].setAttribute('src', resp[0].user.profile_image.medium)
-                    console.log(resp)
+                    this.arrayUserTile[i].setAttribute('data-name', resp[0].user.username)
+
                 })
         }
+        this.addUsersFromTile();
 
     }
-    setPropertiesForUserTile(name) {
-        console.log(name)
+
+    addUsersFromTile() {
+        this.arrayUserTile.forEach(el => el.addEventListener('click', () => {
+            el.classList.toggle('users__tile--active');
+            this.arrayUserShow.push(el.dataset.name);
+            this.createSpanForCounting();
+        }))
     }
+
+    createSpanForCounting() {
+        let span = document.createElement('span');
+        span.classList.add('card__navigation-number');
+        this.arrayCounterElement.push(span);
+        this.counter.appendChild(span);
+    }
+
+
 
     changeUser() {
         this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
