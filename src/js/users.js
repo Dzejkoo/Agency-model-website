@@ -59,26 +59,33 @@ export class Users {
                     this.usersName[i].textContent = `${resp[0].user.name}`
                     this.usersImage[i].setAttribute('src', resp[0].user.profile_image.medium)
                     this.arrayUserTile[i].setAttribute('data-name', resp[0].user.username)
-
                 })
         }
-        this.addUsersFromTile();
+        this.usersFromTile();
 
     }
 
-    addUsersFromTile() {
+    usersFromTile() {
         this.arrayUserTile.forEach(el => el.addEventListener('click', () => {
             el.classList.toggle('users__tile--active');
-            this.arrayUserShow.push(el.dataset.name);
-            this.createSpanForCounting();
+            console.log(el)
+            if (!this.arrayUserShow.includes(el.dataset.name)) {
+                this.arrayUserShow.push(el.dataset.name);
+            } else {
+                let indexDeleteUser = this.arrayUserShow.indexOf(el.dataset.name)
+                this.arrayUserShow.splice(indexDeleteUser, 1);
+            }
+            console.log()
+            this.createSpanForCounting(this.arrayUserShow.length);
         }))
     }
 
-    createSpanForCounting() {
+    createSpanForCounting(number) {
         let span = document.createElement('span');
         span.classList.add('card__navigation-number');
         this.arrayCounterElement.push(span);
         this.counter.appendChild(span);
+        span.textContent = `${number}`
     }
 
 
