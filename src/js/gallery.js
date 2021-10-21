@@ -10,8 +10,12 @@ export class Gallery {
 
     listenClick() {
         this.pictures.forEach(el => el.addEventListener('click', () => {
-            this.changeMainPhoto(el.src)
+            this.changeMainPhoto(el.src);
+            this.pictures.forEach(picture => picture.classList.remove('card__gallery-photo--active'))
+            el.classList.add('card__gallery-photo--active')
+
         }))
+
     }
 
     changeMainPhoto(src) {

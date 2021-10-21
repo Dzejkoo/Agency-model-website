@@ -1,0 +1,23 @@
+.navigation {
+    max-width: 90vw;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #515150 0%, #1F1F1F 100%);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transform: translateY(-20%);
+}
+
+.button {
+    background: transparent;
+    border: 0;
+    padding: 15px 25px;
+    color: #ffff;
+    font-size: 1.7rem;
+    // font-weight: 300;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond';
+    letter-spacing: -1px;
+}

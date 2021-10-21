@@ -10,10 +10,13 @@ class Models {
         this.getModelsPhotoFromApi();
 
     }
-    getModelsPhotoFromApi() {
-        return fetch(`${this.apiUrl}/users/domjewel/photos/?client_id=${this.apiKey}`)
-            .then(resp => resp.json())
-            .then(data => this.chooseSpecificDimensions(data))
+
+    async getModelsPhotoFromApi() {
+        const response = await fetch(`${this.apiUrl}/users/domjewel/photos/?client_id=${this.apiKey}`)
+        let data = await response.json();
+        if (response.status === 200) {
+            this.chooseSpecificDimensions(data);
+        }
     }
 
     chooseSpecificDimensions(array) {

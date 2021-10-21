@@ -51,15 +51,16 @@ export class Users {
         this.changeUser();
     }
 
-    setUserOnTile() {
+    async setUserOnTile() {
         for (let i = 0; i < this.arrayNameUserTile.length; i++) {
-            fetch(`${this.models.apiUrl}/users/${this.arrayNameUserTile[i]}/photos/?client_id=${this.models.apiKey}`)
-                .then(resp => resp.json())
-                .then(resp => {
-                    this.usersName[i].textContent = `${resp[0].user.name}`
-                    this.usersImage[i].setAttribute('src', resp[0].user.profile_image.medium)
-                    this.arrayUserTile[i].setAttribute('data-name', resp[0].user.username)
-                })
+            const response = await fetch(`${this.models.apiUrl}/users/${this.arrayNameUserTile[i]}/photos/?client_id=${this.models.apiKey}`);
+            let data = await response.json();
+            if (response.status === 200) {
+                this.usersName[i].textContent = `${data[0].user.name}`
+                this.usersImage[i].setAttribute('src', data[0].user.profile_image.medium)
+                this.arrayUserTile[i].setAttribute('data-name', data[0].user.username)
+
+            }
         }
         this.usersFromTile();
 
@@ -68,15 +69,15 @@ export class Users {
     usersFromTile() {
         this.arrayUserTile.forEach(el => el.addEventListener('click', () => {
             el.classList.toggle('users__tile--active');
-            console.log(el)
             if (!this.arrayUserShow.includes(el.dataset.name)) {
                 this.arrayUserShow.push(el.dataset.name);
+                this.createSpanForCounting(this.arrayUserShow.length);
             } else {
                 let indexDeleteUser = this.arrayUserShow.indexOf(el.dataset.name)
                 this.arrayUserShow.splice(indexDeleteUser, 1);
+                this.deleteSpanForCounting(this.arrayUserShow.length);
             }
-            console.log()
-            this.createSpanForCounting(this.arrayUserShow.length);
+
         }))
     }
 
@@ -88,18 +89,23 @@ export class Users {
         span.textContent = `${number}`
     }
 
-
-
-    changeUser() {
-        this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
-        fetch(`${this.models.apiUrl}/users/${this.arrayUserShow[this.i]}/photos/?client_id=${this.models.apiKey}`)
-            .then(resp => resp.json())
-            .then(data => this.models.chooseSpecificDimensions(data))
-        this.changeAnimation();
+    deleteSpanForCounting(number) {
+        this.arrayCounterElement[number].remove()
     }
 
 
+    async changeUser() {
+        console.log('jestem')
+        const response = await fetch(`${this.models.apiUrl}/users/${this.arrayUserShow[this.i]}/photos/?client_id=${this.models.apiKey}`);
+        let data = await response.json();
+        if (response.status === 200) {
+            this.models.chooseSpecificDimensions(data);
+            this.changeAnimation();
+        }
+    }
+
     changeAnimation() {
+        this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
         this.headerCard.classList.add('card__name--active');
         this.mainPhoto.classList.add('card__image-wrapper--active');
         this.galleryContainer.classList.add('card__gallery--active')
