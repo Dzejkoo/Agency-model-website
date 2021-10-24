@@ -15,14 +15,12 @@ export class Users {
         this.mainPhoto = document.querySelector('.card__image-wrapper')
         this.galleryContainer = document.querySelector('.card__gallery')
         this.desciptionUser = document.querySelector('.card__description')
-
         this.counter = document.querySelector('.card__count');
         this.changeUsersByClick()
         this.i = 0;
         this.models = new Models();
         this.setUserOnTile();
     }
-
     changeUsersByClick() {
         this.buttonEl.forEach(element => element.addEventListener('click', () => {
             if (this.buttonEl[0] === element) {
@@ -38,10 +36,8 @@ export class Users {
         if (this.i >= this.arrayUserShow.length) {
             this.i = 0
         }
-
         this.changeUser();
     }
-
     prevUser() {
         this.arrayCounterElement[this.i].classList.remove('card__navigation-number--active')
         if (0 >= this.i) {
@@ -50,7 +46,6 @@ export class Users {
         this.i--;
         this.changeUser();
     }
-
     async setUserOnTile() {
         for (let i = 0; i < this.arrayNameUserTile.length; i++) {
             const response = await fetch(`${this.models.apiUrl}/users/${this.arrayNameUserTile[i]}/photos/?client_id=${this.models.apiKey}`);
@@ -59,13 +54,10 @@ export class Users {
                 this.usersName[i].textContent = `${data[0].user.name}`
                 this.usersImage[i].setAttribute('src', data[0].user.profile_image.medium)
                 this.arrayUserTile[i].setAttribute('data-name', data[0].user.username)
-
             }
         }
         this.usersFromTile();
-
     }
-
     usersFromTile() {
         this.arrayUserTile.forEach(el => el.addEventListener('click', () => {
             el.classList.toggle('users__tile--active');
@@ -77,10 +69,8 @@ export class Users {
                 this.arrayUserShow.splice(indexDeleteUser, 1);
                 this.deleteSpanForCounting(this.arrayUserShow.length);
             }
-
         }))
     }
-
     createSpanForCounting(number) {
         let span = document.createElement('span');
         span.classList.add('card__navigation-number');
@@ -88,12 +78,9 @@ export class Users {
         this.counter.appendChild(span);
         span.textContent = `${number}`
     }
-
     deleteSpanForCounting(number) {
         this.arrayCounterElement[number].remove()
     }
-
-
     async changeUser() {
         console.log('jestem')
         const response = await fetch(`${this.models.apiUrl}/users/${this.arrayUserShow[this.i]}/photos/?client_id=${this.models.apiKey}`);
@@ -103,7 +90,6 @@ export class Users {
             this.changeAnimation();
         }
     }
-
     changeAnimation() {
         this.arrayCounterElement[this.i].classList.add('card__navigation-number--active')
         this.headerCard.classList.add('card__name--active');

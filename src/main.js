@@ -1,15 +1,10 @@
 import {
     Users
 } from './js/users';
-
 import {
     Swiper
 } from './js/swiper';
-
-
 import './sass/main.scss';
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const users = new Users();
     new Swiper();

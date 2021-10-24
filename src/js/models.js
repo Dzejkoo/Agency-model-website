@@ -8,9 +8,7 @@ class Models {
         this.apiKey = 'ujAeYpJ3CH0yUrvTA4u8xlRL2BxqXpY4jj_uEUew8h0'
         this.gallery = new Gallery()
         this.getModelsPhotoFromApi();
-
     }
-
     async getModelsPhotoFromApi() {
         const response = await fetch(`${this.apiUrl}/users/domjewel/photos/?client_id=${this.apiKey}`)
         let data = await response.json();
@@ -18,7 +16,6 @@ class Models {
             this.chooseSpecificDimensions(data);
         }
     }
-
     chooseSpecificDimensions(array) {
         const correctPhoto = array.filter(element => {
             if (element.width < element.height) {

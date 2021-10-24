@@ -7,22 +7,16 @@ export class Gallery {
         this.linkToUserProfile = document.querySelector('.card__navigation-link');
         this.listenClick()
     }
-
     listenClick() {
         this.pictures.forEach(el => el.addEventListener('click', () => {
             this.changeMainPhoto(el.src);
             this.pictures.forEach(picture => picture.classList.remove('card__gallery-photo--active'))
             el.classList.add('card__gallery-photo--active')
-
         }))
-
     }
-
     changeMainPhoto(src) {
         this.mainPicture.setAttribute('src', src)
     }
-
-
     setPropertiesPhoto(correctPhoto, username, userBio, linkToProfile) {
         setTimeout(() => {
             this.name.textContent = `${username}`
@@ -34,6 +28,5 @@ export class Gallery {
                 this.pictures[i].setAttribute('alt', correctPhoto[i].alt_description)
             }
         }, 550)
-
     }
 }
