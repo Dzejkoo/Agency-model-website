@@ -1,5 +1,5 @@
 
-![](https://github.com/Dzejkoo/Unsplash-finder-website/blob/main/public/github/desctop-all.jpg?raw=true)
+![](https://github.com/Dzejkoo/Unsplash-finder-app/blob/main/public/github/desktop-all.jpg?raw=true)
 
 # Unsplash-finder-app 🙌 
 
