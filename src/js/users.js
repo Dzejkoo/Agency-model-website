@@ -50,10 +50,17 @@ export class Users {
         for (let i = 0; i < this.arrayNameUserTile.length; i++) {
             const response = await fetch(`${this.models.apiUrl}/users/${this.arrayNameUserTile[i]}/photos/?client_id=${this.models.apiKey}`);
             let data = await response.json();
+            const {
+                name,
+                username
+            } = data[0].user
+            const {
+                medium
+            } = data[0].user.profile_image
             if (response.status === 200) {
-                this.usersName[i].textContent = `${data[0].user.name}`
-                this.usersImage[i].setAttribute('src', data[0].user.profile_image.medium)
-                this.arrayUserTile[i].setAttribute('data-name', data[0].user.username)
+                this.usersName[i].textContent = `${name}`
+                this.usersImage[i].setAttribute('src', medium)
+                this.arrayUserTile[i].setAttribute('data-name', username)
             }
         }
         this.usersFromTile();

@@ -22,7 +22,18 @@ class Models {
                 return element
             }
         });
-        this.gallery.setPropertiesPhoto(correctPhoto, array[0].user.name, array[0].user.bio, array[0].user.links.html)
+        const {
+            name,
+            bio
+        } = array[0].user;
+
+        const {
+            html
+        } = array[0].links
+
+
+        console.log(name, bio, html)
+        this.gallery.setPropertiesPhoto(correctPhoto, name, bio, html)
     }
 }
 export {

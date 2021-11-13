@@ -18,6 +18,7 @@ export class Gallery {
         this.mainPicture.setAttribute('src', src)
     }
     setPropertiesPhoto(correctPhoto, username, userBio, linkToProfile) {
+
         setTimeout(() => {
             this.name.textContent = `${username}`
             this.desciptionUser.textContent = `${userBio}`
